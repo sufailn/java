@@ -1,53 +1,87 @@
 import java.util.Scanner;
-interface MyInterface{
-       void Calc();
+class person{
+    String name,gender,address;
+    int age;
+    person(String name,String gender,String address,int age){
+        this.name=name;
+        this.gender=gender;
+        this.address=address;
+        this.age=age;
+    }
 }
-class Bill implements MyInterface{
-     int p_id;
-     String p_name;
-     int p_quantity;
-     int unit_price;
-     int total=0;
-     public Bill(int p_id,String p_name,int p_quantity,int unit_price){
-          this.p_id=p_id;
-          this.p_name=p_name;
-          this.p_quantity=p_quantity;
-          this.unit_price=unit_price;
-     }
-     public void Calc(){
-          total=p_quantity*unit_price;
-     }
-     void Display(){
-          System.out.println(p_id+"           "+p_name+"      "+p_quantity+"          "+unit_price+"           "+total);
-     }
+class Employee extends person{
+    int empid,salary;
+    String company_name,qualification;
+    Employee(int empid,String company_name,String qualification,int salary,String name,String gender,String address,int age){
+        super(name, gender, address, age);
+        this.empid=empid;
+        this.company_name=company_name;
+        this.qualification=qualification;
+        this.salary=salary;
+    }
 }
-class main7{
-     public static void main(String args[]){
-          Scanner sc=new Scanner(System.in);
-          Bill arr[]=new Bill[2];
-          for(int i=0;i<2;i++){
-               System.out.println("Enter product id:");
-               int id=sc.nextInt();
-               System.out.println("Enter product Name:");
-               String name=sc.next();
-               System.out.println("Enter product quantity:");
-               int q=sc.nextInt();
-               System.out.println("Enter unit price:");
-               int u=sc.nextInt();
-               arr[i]=new Bill(id,name,q,u);
-          }
-          System.out.println("Order no:321");
-          System.out.println();
-          System.out.println("Date:9.07.23");
-          System.out.println("product Id   Name   Quantity   Unit Price   Total");
-          System.out.println("_________________________________________________");
-          int net=0;
-          for(int i=0;i<2;i++){
-               arr[i].Calc();
-               arr[i].Display();
-               net=net+arr[i].total;
-          }
-          System.out.println("_________________________________________________");
-          System.out.println("                               Net Amount     "+net);
-     }
+class Teacher extends Employee{
+    String subject;
+    String Department;
+    int TeacherID;
+    Teacher(String subject,String Department,int TeacherID,int empid,String company_name,String qualification,int salary,String name,String gender,String address,int age){
+        super(empid, company_name, qualification, salary, name, gender, address, age);
+        this.subject=subject;
+        this.Department=Department;
+        this.TeacherID=TeacherID;
+    }
+    void Display(){
+        System.out.println("Name:"+name);
+        System.out.println("Gender:"+gender);
+        System.out.println("Address:"+address);
+        System.out.println("Age:"+age);
+        System.out.println("Employee ID:"+empid);
+        System.out.println("Company Name:"+company_name);
+        System.out.println("Qualififcation:"+qualification);
+        System.out.println("Salary:"+salary);
+        System.out.println("Teacher ID:"+TeacherID);
+        System.out.println("Department:"+Department);
+        System.out.println("Subject:"+subject);
+    }
+
+}
+class Main3{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the number of persons:");
+        int n=sc.nextInt();
+        Teacher arr[]=new Teacher[10];
+        for(int i=0;i<n;i++){
+            System.out.println("Details of Person "+(i+1));
+            System.out.println("_____________");
+            System.out.println("Enter Name:");
+            String name=sc.next();
+            System.out.println("Enter Gender:");
+            String gender=sc.next();
+            System.out.println("Enter Address:");
+            String address=sc.next();
+            System.out.println("Enter Age:");
+            int age=sc.nextInt();
+            System.out.println("Enter Employee Id:");
+            int empid=sc.nextInt();
+            System.out.println("Enter Company Name:");
+            String cname=sc.next();
+            System.out.println("Enter qualififcation:");
+            String Quali=sc.next();
+            System.out.println("Enter Salary:");
+            int salary=sc.nextInt();
+            System.out.println("Enter subject:");
+            String sub=sc.next();
+            System.out.println("Enter Department:");
+            String dept=sc.next();
+            System.out.println("Enter Teacher ID:");
+            int tid=sc.nextInt();
+            arr[i]=new Teacher(sub, dept, tid, empid, cname, Quali, salary, name, gender, address, age);
+        }
+        for(int i=0;i<n;i++){
+            System.out.println("Details of Person "+(i+1));
+            System.out.println("_____________________");
+            arr[i].Display();
+        }  
+    }
 }
