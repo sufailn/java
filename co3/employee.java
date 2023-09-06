@@ -1,53 +1,70 @@
-import java.util.Scanner;
-interface MyInterface{
-       void Calc();
+import java.util.Scanner; 
+ class Employee
+ { 
+ int empid,salary;
+ String name,address;
+Employee()
+{
+       Scanner sc =new Scanner(System.in); 
+       System.out.println("Enter the Employee ID:");
+       empid=sc.nextInt();
+       System.out.println("Enter Name:");
+       name=sc.next();
+       System.out.println("Enter the Salary:");
+       salary=sc.nextInt();
+       System.out.println("Enter Address:");
+       address=sc.next();
 }
-class Bill implements MyInterface{
-     int p_id;
-     String p_name;
-     int p_quantity;
-     int unit_price;
-     int total=0;
-     public Bill(int p_id,String p_name,int p_quantity,int unit_price){
-          this.p_id=p_id;
-          this.p_name=p_name;
-          this.p_quantity=p_quantity;
-          this.unit_price=unit_price;
-     }
-     public void Calc(){
-          total=p_quantity*unit_price;
-     }
-     void Display(){
-          System.out.println(p_id+"           "+p_name+"      "+p_quantity+"          "+unit_price+"           "+total);
-     }
 }
-class main7{
-     public static void main(String args[]){
-          Scanner sc=new Scanner(System.in);
-          Bill arr[]=new Bill[2];
-          for(int i=0;i<2;i++){
-               System.out.println("Enter product id:");
-               int id=sc.nextInt();
-               System.out.println("Enter product Name:");
-               String name=sc.next();
-               System.out.println("Enter product quantity:");
-               int q=sc.nextInt();
-               System.out.println("Enter unit price:");
-               int u=sc.nextInt();
-               arr[i]=new Bill(id,name,q,u);
-          }
-          System.out.println("Order no:321");
-          System.out.println();
-          System.out.println("Date:9.07.23");
-          System.out.println("product Id   Name   Quantity   Unit Price   Total");
-          System.out.println("_________________________________________________");
-          int net=0;
-          for(int i=0;i<2;i++){
-               arr[i].Calc();
-               arr[i].Display();
-               net=net+arr[i].total;
-          }
-          System.out.println("_________________________________________________");
-          System.out.println("                               Net Amount     "+net);
-     }
+class Teacher extends Employee
+{
+        String dept,sub1,sub2,sub3;
+        Teacher()
+        {
+                Scanner sc =new Scanner(System.in); 
+                System.out.println("Enter Department:");
+                dept=sc.next();
+                System.out.println("Enter Subject1:");
+                sub1=sc.next();
+                System.out.println("Enter Subject2:");
+                sub2=sc.next();
+                System.out.println("Enter Subject3:");
+                sub3=sc.next();
+        }
+        void display()
+        {
+             System.out.println("Empolyee ID:" +empid); 
+             System.out.println("Name:" +name); 
+             System.out.println("Salary:" +salary);
+             System.out.println("Address:" +address); 
+             System.out.println("Department:" +dept); 
+             System.out.println("Subject1:" +sub1);
+             System.out.println("Subject2:" +sub2);
+             System.out.println("Subject3:" +sub3);
+
+        }
 }
+ 
+ public class Main
+ {
+ public static void main(String args[])
+ { 
+   Scanner sc =new Scanner(System.in); 
+ System.out.println("\nEnter the No.of teacher"); 
+ int n=sc.nextInt();
+ Teacher t[]=new Teacher[n]; 
+ for(int i =0;i<n;i++)
+ { 
+ t[i]=new Teacher(); 
+  } 
+ System.out.println("-------------------");
+ System.out.println("\n TEACHER DETAILS"); 
+ System.out.println("-------------------");
+ for(int i=0;i<n;i++)
+ { 
+ t[i].display(); 
+  System.out.println("-------------------");
+ } 
+ }
+ }
+ 
