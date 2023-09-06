@@ -1,25 +1,23 @@
-package graphics;
+import graphics.*;
 import java.util.Scanner;
-interface Area2
+class Main
 {
-void get2();
-void show2();
-}
-public class Triangle implements Area2
+public static void main(String args[])
 {
 Scanner sc=new Scanner(System.in);
-int b,h;
-double a2;
-public void get2()
-{
-System.out.println("Enter the base:");
-b=sc.nextInt();
-System.out.println("Enter the height:");
-h=sc.nextInt();
+graphics.Rect r1=new graphics.Rect();
+graphics.Square s1=new graphics.Square();
+graphics.Triangle t1=new graphics.Triangle();
+graphics.Circle c1=new graphics.Circle();
+r1.get();
+r1.show();
+s1.get1();
+s1.show1();
+t1.get2();
+t1.show2();
+c1.get3();
+c1.show3();
 }
-public void show2()
-{
-a2=.5*b*h;
-System.out.println("The area of triangle is:" +a2);
 }
-}
+~
+~
